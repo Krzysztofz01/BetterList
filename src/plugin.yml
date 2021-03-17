@@ -1,0 +1,7 @@
+main: me.Krzysztofz01.BetterList.Main
+name: BetterList
+version: 1.0
+author: Krzysztofz01
+
+commands:
+  blist:
