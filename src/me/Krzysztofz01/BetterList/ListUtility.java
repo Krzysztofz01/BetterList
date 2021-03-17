@@ -24,14 +24,15 @@ public class ListUtility {
 	//Implement country detection
 	private static String ParsePlayer(Player player) {
 		String IpAddress = player.getAddress().getAddress().getHostAddress();
+		String country = Geolocation.GetLocation(IpAddress);
 		
 		Location loc = player.getLocation();
 		String parsedLocation = "[" + Math.floor(loc.getX()) + ", " + Math.floor(loc.getY()) + ", " + Math.floor(loc.getZ()) + "]";
 		
 		if(player.isOp()) {
-			return ChatColor.translateAlternateColorCodes('&', "&3&o-> &6&l" + player.getName() + "&r&3&o - IP: " + IpAddress + " [country] " + parsedLocation);
+			return ChatColor.translateAlternateColorCodes('&', "&3&o-> &6&l" + player.getName() + "&r&3&o - IP: " + IpAddress + " [" + country + "] " + parsedLocation);
 		}
-		return ChatColor.translateAlternateColorCodes('&', "&3&o-> &e" + player.getName() + "&r&3&o - IP: " + IpAddress + " [country] " + parsedLocation);
+		return ChatColor.translateAlternateColorCodes('&', "&3&o-> &e" + player.getName() + "&r&3&o - IP: " + IpAddress + " [" + country + "] " + parsedLocation);
 	}
 	
 	//Display all online players

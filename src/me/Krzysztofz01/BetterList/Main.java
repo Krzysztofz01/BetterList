@@ -24,30 +24,6 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		/*if (label.equalsIgnoreCase("blist")) {
-			List<String> list = new ListParser().ListPlayersOnline();
-			
-			if (sender instanceof Player) {
-				Player player = (Player)sender;
-				if(player.hasPermission("blist.use")) {
-					list.forEach((line) -> {
-						player.sendMessage(line);
-					});
-					return true;
-				}
-	
-			} else if (sender instanceof ConsoleCommandSender) {
-				ConsoleCommandSender console = (ConsoleCommandSender)sender;
-				list.forEach((line) -> {
-					console.sendMessage(line);
-				});
-				return true;
-				
-			}
-		}
-		
-		return false;*/
-		
 		if(label.equalsIgnoreCase("blist")) {
 			if(args.length == 0) {
 				return this.Display(sender, ListUtility.ListOnline(), true);
