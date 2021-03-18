@@ -39,7 +39,7 @@ public class ListUtility {
 	public static List<String> ListOnline() {
 		List<String> outputContainer = new ArrayList<String>();
 		List<Player> onlinePlayers = new ArrayList<Player>(Bukkit.getOnlinePlayers());
-		
+			
 		outputContainer.addAll(Header());
 		outputContainer.add(ChatColor.translateAlternateColorCodes('&', "&3&o-> &bOnline Players:"));
 		outputContainer.add("");
@@ -53,31 +53,20 @@ public class ListUtility {
 	
 	//Display all offline players
 	public static List<String> ListOffline() {
-		List<String> outputContainer = new ArrayList<String>();
-		List<Player> onlinePlayers = new ArrayList<Player>();
-		
-		outputContainer.addAll(Header());
-		outputContainer.add(ChatColor.translateAlternateColorCodes('&', "&3&o-> &bOffline Players:"));
-		outputContainer.add("");
-		
-		onlinePlayers.forEach((player) -> {
-			outputContainer.add(ParsePlayer(player));
-		});
-		
-		return outputContainer;
+		return null;
 	}
 	
 	//Display all banned players
 	public static List<String> ListBanned() {
 		List<String> outputContainer = new ArrayList<String>();
-		List<Player> onlinePlayers = new ArrayList<Player>();
+		var bannedPlayers = Bukkit.getBannedPlayers();
 		
 		outputContainer.addAll(Header());
 		outputContainer.add(ChatColor.translateAlternateColorCodes('&', "&3&o-> &bBanned Players:"));
 		outputContainer.add("");
 		
-		onlinePlayers.forEach((player) -> {
-			outputContainer.add(ParsePlayer(player));
+		bannedPlayers.forEach((player) -> {
+			outputContainer.add(ParsePlayer(player.getPlayer()));
 		});
 		
 		return outputContainer;

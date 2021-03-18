@@ -15,11 +15,12 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		ConsoleCommandSender console = getServer().getConsoleSender();
 		console.sendMessage("BetterList V1.0 by: Krzysztofz01");
+		
+		getServer().getPluginManager().registerEvents(new JoinEventHandler(), this);
 	}
 	
 	@Override
 	public void onDisable() {
-		
 	}
 	
 	@Override
