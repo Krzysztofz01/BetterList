@@ -21,7 +21,6 @@ public class ListUtility {
 	}
 	
 	//Parse single player data
-	//Implement country detection
 	private static String ParsePlayer(Player player) {
 		String IpAddress = player.getAddress().getAddress().getHostAddress();
 		String country = Geolocation.GetLocation(IpAddress);

@@ -5,10 +5,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Geolocation {
 	private static HttpClient client = HttpClient.newBuilder().build();
+	private static Pattern jsonCountryPattern = Pattern.compile(".*?country_name\"\\s?:\\s?\"([\\w\\s]+)");
 
+	//Make a GET request to the freegeoip API to get the country based on IP
 	public static String GetLocation(String ipAddress) {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("https://freegeoip.app/json/" + ipAddress.trim()))
@@ -27,15 +31,11 @@ public class Geolocation {
 		}
 	}
 	
+	//I don't wanna use external lib's, so i wrote a simple regex to extract the country name from the JSON respond
 	private static String GetCountryName(String response) {
-		String[] parts = response.split("\"");
-		for(int i=0; i < parts.length; i++) {
-			if(parts[i].equals("country_name")) {
-				int countryIndex = i + 2;
-				if(countryIndex <= parts.length) {
-					return parts[countryIndex];
-				}
-			}
+		Matcher match = jsonCountryPattern.matcher(response);
+		while(match.find()) {
+			return match.group(1);
 		}
 		return "No data!";
 	}

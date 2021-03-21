@@ -2,6 +2,16 @@ main: me.Krzysztofz01.BetterList.Main
 name: BetterList
 version: 1.0
 author: Krzysztofz01
+description: A lightweight extension to the default list command.
+api-version: 1.16
 
 commands:
   blist:
+    description: List all players by default or by parameter.
+    permission: BetterList.blist.full
+    permission-message: You do not have permission to use this command.
+    
+permissions:
+  BetterList.blist.full:
+    description: Full access to BetterList usage.
+    default: op
